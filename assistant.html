@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penetrative AI Assistant</title>
+    <link rel="stylesheet" href="assistant.css">
+</head>
+<body>
+    <main class="assistant-shell">
+        <header class="assistant-header">
+            <div>
+                <p class="eyebrow">Library AI</p>
+                <h1>Penetrative AI Assistant</h1>
+            </div>
+            <div class="assistant-header-actions">
+                <button id="newChatButton" class="secondary-btn" type="button">New chat</button>
+                <a href="/" class="back-link">Back to Library</a>
+            </div>
+        </header>
+
+        <section id="assistantMessages" class="assistant-messages" aria-live="polite"></section>
+        <p id="assistantStatus" class="assistant-status" role="status" aria-live="polite"></p>
+
+        <form id="assistantForm" class="assistant-form">
+            <label for="assistantInput" class="sr-only">Ask the AI assistant</label>
+            <textarea id="assistantInput" rows="3" maxlength="2000" required placeholder="Ask about borrowing, returns, premium plans, or library support..."></textarea>
+            <button id="assistantSendButton" type="submit" class="primary-btn">Send</button>
+        </form>
+    </main>
+
+    <script src="assistant.js"></script>
+</body>
+</html>

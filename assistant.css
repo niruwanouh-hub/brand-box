@@ -1,0 +1,227 @@
+:root {
+    --bg: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #e0e7ff 100%);
+    --panel: rgba(255, 255, 255, 0.88);
+    --panel-border: rgba(124, 58, 237, 0.12);
+    --primary: #7c3aed;
+    --primary-dark: #5b21b6;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --bubble-user: #7c3aed;
+    --bubble-bot: #f3e8ff;
+    --shadow: 0 20px 45px rgba(109, 40, 217, 0.18);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.assistant-shell {
+    width: min(820px, 100%);
+    background: var(--panel);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--panel-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+}
+
+.assistant-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.assistant-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.eyebrow {
+    margin: 0 0 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+.assistant-header h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+    color: var(--primary);
+}
+
+.back-link {
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.secondary-btn {
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 9px 13px;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--primary-dark);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.secondary-btn:hover {
+    background: var(--bubble-bot);
+}
+
+.assistant-messages {
+    min-height: 380px;
+    max-height: 560px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid rgba(124, 58, 237, 0.08);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.message {
+    display: flex;
+    max-width: 80%;
+}
+
+.message.user {
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+.message.bot {
+    margin-right: auto;
+    justify-content: flex-start;
+}
+
+.message-bubble {
+    padding: 12px 14px;
+    border-radius: 16px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.message.user .message-bubble {
+    background: var(--bubble-user);
+    color: white;
+    border-bottom-right-radius: 6px;
+}
+
+.message.bot .message-bubble {
+    background: var(--bubble-bot);
+    color: var(--text);
+    border-bottom-left-radius: 6px;
+}
+
+.assistant-status {
+    min-height: 22px;
+    margin: 8px 4px 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.assistant-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.assistant-form textarea {
+    flex: 1;
+    width: 100%;
+    min-height: 96px;
+    resize: vertical;
+    border-radius: 14px;
+    border: 1px solid rgba(124, 58, 237, 0.18);
+    padding: 12px 14px;
+    font: inherit;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.primary-btn {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(124, 58, 237, 0.22);
+}
+
+.primary-btn:hover {
+    background: linear-gradient(135deg, #6d28d9, #5b21b6);
+}
+
+.primary-btn:disabled,
+.secondary-btn:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 640px) {
+    .assistant-shell {
+        padding: 16px;
+    }
+
+    .assistant-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .assistant-header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .assistant-messages {
+        min-height: 300px;
+    }
+
+    .message {
+        max-width: 92%;
+    }
+
+    .assistant-form {
+        flex-direction: column;
+    }
+
+    .primary-btn {
+        width: 100%;
+    }
+}
